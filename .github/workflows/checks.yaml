@@ -27,9 +27,11 @@ jobs:
           fetch-depth: 0
 
       - name: Install ruby version ${{ matrix.cfg.ruby }}
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.cfg.ruby }}
+        run: |
+          if [ ! -f "/opt/runner/_work/_tool/Ruby/3.1/s390x.complete" ]; then
+            ruby-build 3.1 /opt/runner/_work/_tool/Ruby/3.1/s390x
+            touch /opt/runner/_work/_tool/Ruby/3.1/s390x.complete
+          fi
 
       - name: Update rubygems and install gems
         run: |
