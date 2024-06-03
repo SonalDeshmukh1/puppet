@@ -28,10 +28,7 @@ jobs:
 
       - name: Install ruby version ${{ matrix.cfg.ruby }}
         run: |
-          if ! command -v ruby-build &> /dev/null; then
-            # Install ruby-build
-            git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-          fi
+          git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
           if [ ! -f "/opt/runner/_work/_tool/Ruby/3.1/s390x.complete" ]; then
             ruby-build 3.1 /opt/runner/_work/_tool/Ruby/3.1/s390x
             touch /opt/runner/_work/_tool/Ruby/3.1/s390x.complete
