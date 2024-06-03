@@ -3,11 +3,11 @@ name: Mend Monitor
 on:
   push:
     branches:
-      - main
+      - puppet-sonal
 jobs:
   mend_monitor:
     if: ${{ github.repository_owner == 'puppetlabs' }}
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     name: Mend Monitor
     steps:
       - name: Checkout current PR
